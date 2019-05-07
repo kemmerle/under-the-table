@@ -17,22 +17,23 @@ ActiveRecord::Schema.define(version: 2019_05_07_181218) do
 
   create_table "boston_restaurants", force: :cascade do |t|
     t.string "businessname", default: "Business name not provided", null: false
-    t.string "legalowner", default: "Owner not listed", null: false
-    t.string "namelast", default: "Owner's last name not listed", null: false
-    t.string "namefirst", default: "Owner's last name not listed", null: false
-    t.string "licenseno", default: "License number not given", null: false
-    t.string "licstatus", default: "License status unknown", null: false
-    t.string "resultdttm", default: "Inspection date not provided", null: false
-    t.string "viollevel", default: "Violation level not provided", null: false
-    t.string "violdesc", default: "Violation description not provided", null: false
-    t.string "violstatus", default: "Inspection result not provided", null: false
-    t.string "statusdate", default: "Inspection date not provided", null: false
-    t.text "comments", default: "Inspector comments not provided", null: false
-    t.string "address", default: "Address not provided", null: false
-    t.string "city", default: "City not provided", null: false
-    t.string "state", default: "State not provided", null: false
-    t.string "zip", default: "Zip code not provided", null: false
-    t.string "location", default: "Location not provided", null: false
+    t.string "legalowner", default: "Owner not listed"
+    t.string "namelast", default: "Owner's last name not listed"
+    t.string "namefirst", default: "Owner's last name not listed"
+    t.string "licenseno", default: "License number not given"
+    t.string "licstatus", default: "License status unknown"
+    t.string "resultdttm", default: "Inspection date not provided"
+    t.string "viollevel", default: "Violation level not provided"
+    t.string "violdesc", default: "Violation description not provided"
+    t.string "violstatus", default: "Inspection result not provided"
+    t.string "statusdate", default: "Inspection date not provided"
+    t.text "comments", default: "Inspector comments not provided"
+    t.string "address", default: "Address not provided"
+    t.string "city", default: "City not provided"
+    t.string "state", default: "State not provided"
+    t.string "zip", default: "Zip code not provided"
+    t.string "location", default: "Location not provided"
+    t.index ["businessname"], name: "index_boston_restaurants_on_businessname"
   end
 
   create_table "users", force: :cascade do |t|
