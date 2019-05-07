@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_07_174606) do
+ActiveRecord::Schema.define(version: 2019_05_07_181218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boston_restaurants", force: :cascade do |t|
+    t.string "businessname", default: "Business name not provided", null: false
+    t.string "legalowner", default: "Owner not listed", null: false
+    t.string "namelast", default: "Owner's last name not listed", null: false
+    t.string "namefirst", default: "Owner's last name not listed", null: false
+    t.string "licenseno", default: "License number not given", null: false
+    t.string "licstatus", default: "License status unknown", null: false
+    t.string "resultdttm", default: "Inspection date not provided", null: false
+    t.string "viollevel", default: "Violation level not provided", null: false
+    t.string "violdesc", default: "Violation description not provided", null: false
+    t.string "violstatus", default: "Inspection result not provided", null: false
+    t.string "statusdate", default: "Inspection date not provided", null: false
+    t.text "comments", default: "Inspector comments not provided", null: false
+    t.string "address", default: "Address not provided", null: false
+    t.string "city", default: "City not provided", null: false
+    t.string "state", default: "State not provided", null: false
+    t.string "zip", default: "Zip code not provided", null: false
+    t.string "location", default: "Location not provided", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
