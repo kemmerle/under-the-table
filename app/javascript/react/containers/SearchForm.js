@@ -23,7 +23,6 @@ class SearchForm extends Component {
     const body = JSON.stringify({
       query: this.state.query
     })
-    debugger 
     fetch('/api/v1/boston_restaurants/search.json', {
       method: 'POST',
       body: body,
@@ -32,7 +31,6 @@ class SearchForm extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       this.setState({ restaurants: body })
     })
   }
@@ -41,8 +39,9 @@ class SearchForm extends Component {
     const bostonRestaurants = this.state.restaurants.map(restaurant => {
     return(
       <li key={restaurant.id}>
-        {restaurant.businessname}
-        {restaurant.comments}
+        {restaurant.businessname} <br/>
+        {restaurant.comments} <br/>
+        {restaurant.violstatus} <br/> 
       </li>
     )
   })
