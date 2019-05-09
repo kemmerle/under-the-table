@@ -9,5 +9,6 @@ class BostonRestaurantShowSerializer < ActiveModel::Serializer
     :address,
     :city,
     :state,
-    :zip
+    :zip,
+    :id 
 end

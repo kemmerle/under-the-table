@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import SearchField from "../components/SearchField";
+import SearchField from "./SearchField";
 
 class SearchForm extends Component {
   constructor(props) {
@@ -39,9 +39,9 @@ class SearchForm extends Component {
     const bostonRestaurants = this.state.restaurants.map(restaurant => {
     return(
       <li key={restaurant.id}>
-        {restaurant.businessname} <br/>
-        {restaurant.comments} <br/>
-        {restaurant.violstatus} <br/> 
+      {restaurant.businessname} <br/>
+      {restaurant.comments} <br/>
+      {restaurant.violstatus} <br/>
       </li>
     )
   })
