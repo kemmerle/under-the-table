@@ -7,8 +7,9 @@ import BostonShowContainer from "../containers/BostonShowContainer"
 export const App = (props) => {
   return(
     <Router history={browserHistory}>
+    <Route path="/" component={SearchForm} />
+    <Route path="/boston_restaurants" component={SearchForm} />
     <Route path="/boston_restaurants/:id" component={BostonShowContainer} />
-    <Route path="/boston_restaurants/search" component={SearchForm} />
   </Router>
   )
 }

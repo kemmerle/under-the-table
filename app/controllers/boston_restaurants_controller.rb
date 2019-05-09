@@ -7,7 +7,7 @@ class BostonRestaurantsController < ApplicationController
    def search
    end
 
-   def show   
+   def show
      @restaurant = BostonRestaurant.find(params[:id])
    end
 end

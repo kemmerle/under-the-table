@@ -32,7 +32,6 @@ class BostonShowContainer extends Component {
   }
 
   render() {
-    debugger
     return(
       <div>
         <BostonTile

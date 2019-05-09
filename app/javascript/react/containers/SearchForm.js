@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router';
 
 import SearchField from "../components/SearchField";
 
@@ -39,9 +40,7 @@ class SearchForm extends Component {
     const bostonRestaurants = this.state.restaurants.map(restaurant => {
     return(
       <li key={restaurant.id}>
-        {restaurant.businessname} <br/>
-        {restaurant.comments} <br/>
-        {restaurant.violstatus} <br/> 
+        <Link to={`/boston_restaurants/${restaurant.id}`}>{restaurant.businessname}</Link>
       </li>
     )
   })
