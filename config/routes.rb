@@ -4,6 +4,12 @@ Rails.application.routes.draw do
 
   resources :boston_restaurants, only: [:index, :show, :new]
 
+  resources :boston_restaurants do
+    collection do
+      get :search
+    end
+  end
+
   namespace :api do
     namespace :v1 do
       resources :boston_restaurants, only: [:index, :show]
