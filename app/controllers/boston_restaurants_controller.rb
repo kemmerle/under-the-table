@@ -5,6 +5,7 @@ class BostonRestaurantsController < ApplicationController
    end
 
    def search
+     render :search
    end
 
    def show
