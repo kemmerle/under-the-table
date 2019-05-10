@@ -21,19 +21,24 @@ class SearchForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    const body = JSON.stringify({
-      query: this.state.query
+    fetch(`https://data.boston.gov/api/3/action/datastore_search?resource_id=4582bec6-2b4f-4f9e-bc55-cbaa73117f4c&q=${this.state.query}`, {
+      mode: "cors"
     })
-    fetch('/api/v1/boston_restaurants/search.json', {
-      method: 'POST',
-      body: body,
-      credentials: 'same-origin',
-      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
-    })
-    .then(response => response.json())
-    .then(body => {
-      this.setState({ restaurants: body })
-    })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status}(${response.statusText})` ,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+        })
+        .then(response => response.json())
+        .then(body => {
+          debugger
+          this.setState({ restaurants: body.result.records })
+        })
+        .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {

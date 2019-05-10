@@ -5,8 +5,10 @@ class Api::V1::BostonRestaurantsController < ApplicationController
   end
 
   def search
-    @restaurants = BostonRestaurant.where("businessname ILIKE ? OR comments ILIKE ?", "%#{params['query']}%", "%#{params['query']}%")
-    render json: @restaurants
+    query = params["query"]
+    response = Unirest.get `https://data.boston.gov/api/3/action/datastore_search?resource_id=4582bec6-2b4f-4f9e-bc55-cbaa73117f4c&q=#{query}`
+
+    render json: response.body
   end
 
   def show
