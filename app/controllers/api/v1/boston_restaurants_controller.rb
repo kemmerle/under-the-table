@@ -10,9 +10,5 @@ class Api::V1::BostonRestaurantsController < ApplicationController
   end
 
   def show
-    restaurant = BostonRestaurant.find(params[:id])
-    render json: {
-      restaurant: restaurant
-    }
   end
 end
