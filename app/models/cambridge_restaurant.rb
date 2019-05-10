@@ -1,0 +1,3 @@
+class CambridgeRestaurant < ApplicationRecord
+
+end

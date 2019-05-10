@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_07_181218) do
+ActiveRecord::Schema.define(version: 2019_05_10_153551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2019_05_07_181218) do
     t.string "zip", default: "Zip code not provided"
     t.string "location", default: "Location not provided"
     t.index ["businessname"], name: "index_boston_restaurants_on_businessname"
+  end
+
+  create_table "cambridge_restaurants", force: :cascade do |t|
+    t.string "address", default: "Address not provided", null: false
+    t.string "establishment_name", default: "Establishment name not given", null: false
+    t.text "code_description", default: "Code description not provided"
+    t.string "date_cited", default: "Citation date not provided"
+    t.string "date_corrected", default: "Correction date not provided"
+    t.string "status", default: "Status unknown"
   end
 
   create_table "users", force: :cascade do |t|
