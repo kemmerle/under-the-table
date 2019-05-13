@@ -12,7 +12,7 @@ class BostonShowContainer extends Component {
 
   componentDidMount() {
     let restaurantId = this.props.params.id;
-    fetch(`/api/v1/boston_restaurants/${restaurantId}`)
+    fetch(`https://data.boston.gov/api/3/action/datastore_search?resource_id=4582bec6-2b4f-4f9e-bc55-cbaa73117f4c&q=${restaurantId}`)
       .then(response => {
         if (response.ok) {
           return response;

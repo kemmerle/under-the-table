@@ -131,12 +131,6 @@
   .mdl-card__supporting-text + .mdl-card__actions {
    border-top: 1px solid rgba(0, 0, 0, 0.12);
  }
-  #add {
-   position: absolute;
-   right: 40px;
-   top: 36px;
-   z-index: 999;
- }
 
   .mdl-layout__content section:not(:last-of-type) {
    position: relative;
