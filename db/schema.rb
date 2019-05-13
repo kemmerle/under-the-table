@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2019_05_10_153551) do
   end
 
   create_table "cambridge_restaurants", force: :cascade do |t|
-    t.string "address", default: "Address not provided", null: false
-    t.string "establishment_name", default: "Establishment name not given", null: false
+    t.string "address", default: "Address not provided"
+    t.string "establishment_name", default: "Establishment name not given"
     t.text "code_description", default: "Code description not provided"
     t.string "date_cited", default: "Citation date not provided"
     t.string "date_corrected", default: "Correction date not provided"
