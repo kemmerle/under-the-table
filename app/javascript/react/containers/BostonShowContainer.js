@@ -11,7 +11,6 @@ class BostonShowContainer extends Component {
   }
 
   componentDidMount() {
-    debugger
     let restaurantId = this.props.params.id;
     fetch(`https://data.boston.gov/api/3/action/datastore_search?resource_id=4582bec6-2b4f-4f9e-bc55-cbaa73117f4c&q=${this.props.params.id}`)
       .then(response => {
@@ -25,7 +24,6 @@ class BostonShowContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        debugger
         this.setState({
           restaurants: body.result.records
         });
@@ -34,7 +32,6 @@ class BostonShowContainer extends Component {
   }
 
   render() {
-    debugger
     const selectedRestaurants = this.state.restaurants.map(restaurant => {
     return(
       <div>
