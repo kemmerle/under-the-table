@@ -35,7 +35,6 @@ class SearchForm extends Component {
         })
         .then(response => response.json())
         .then(body => {
-          debugger
           this.setState({ restaurants: body.result.records })
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -46,13 +45,6 @@ class SearchForm extends Component {
     return(
       <li key={restaurant._id}>
       <Link to={`/boston_restaurants/${restaurant.licenseno}`}>{`${restaurant.businessname}`}</Link>
-        {restaurant.businessname} <br/>
-        {restaurant.resultdttm} <br/>
-        {restaurant.address} <br/>
-        {restaurant.city} <br/>
-        {restaurant.comments}
-        {restaurant.licenseno}
-        {restaurant._id}
       </li>
     )
   })
