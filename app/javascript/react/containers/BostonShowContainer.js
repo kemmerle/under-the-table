@@ -6,14 +6,13 @@ class BostonShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurants: []
+      restaurant: {}
     }
   }
 
   componentDidMount() {
-    debugger
     let restaurantId = this.props.params.id;
-    fetch(`https://data.boston.gov/api/3/action/datastore_search?resource_id=4582bec6-2b4f-4f9e-bc55-cbaa73117f4c&q=${this.props.params.id}`)
+    fetch(`/api/v1/boston_restaurants/${restaurantId}`)
       .then(response => {
         if (response.ok) {
           return response;
@@ -25,41 +24,30 @@ class BostonShowContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        debugger
         this.setState({
-          restaurants: body.result.records
+          restaurant: body.restaurant
         });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
-    debugger
-    const selectedRestaurants = this.state.restaurants.map(restaurant => {
     return(
       <div>
         <BostonTile
-          key={restaurant._id}
-          id={restaurant._id}
-          businessName={restaurant.businessname}
-          address={restaurant.address}
-          city={restaurant.city}
-          reportDate={restaurant.resultdttm}
-          violLevel={restaurant.viollevel}
-          violStatus={restaurant.violstatus}
-          comments={restaurant.comments}
+          key={this.state.restaurant.id}
+          id={this.state.restaurant.id}
+          businessName={this.state.restaurant.businessname}
+          address={this.state.restaurant.address}
+          city={this.state.restaurant.city}
+          reportDate={this.state.restaurant.resultdttm}
+          violLevel={this.state.restaurant.viollevel}
+          violStatus={this.state.restaurant.violstatus}
+          comments={this.state.restaurant.comments}
          />
-      </div>
-    )
-  })
-    return(
-      <div>
-        <ul>{selectedRestaurants}</ul>
       </div>
     )
   }
 }
-
-
 
 export default BostonShowContainer;

@@ -1,34 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HealthyRestaurants</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="An app that helps you find health reports for Boston and  Cambridge restaurants">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+  <title>Under the Table</title>
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+  <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#3372DF">
+
+  <link rel="shortcut icon" href="images/favicon.png">
+
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="$$hosted_libs_prefix$$/$$version$$/material.deep_purple-pink.min.css">
+  <link rel="stylesheet" href="application.css">
+
+  <style>
+  #view-source {
+    position: fixed;
+    display: block;
+    right: 0;
+    bottom: 0;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    z-index: 900;
+  }
+  </style>
+
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  
+
     <%= javascript_include_tag "vendor/modernizr" %>
-  
+
   <%= csrf_meta_tags %>
 </head>
-<body>
-  
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">HealthyRestaurants</a></h1>
-      </li>
-    </ul>
+<nav class="top-bar">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="/">Under the Table</a></h1>
+    </li>
+  </ul>
 
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
-      </ul>
-    </section>
-  </nav>
+  <section class="top-bar-section">
+    <ul class="right">
+      <%- if current_user -%>
+        <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+      <%- else -%>
+        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+        <li><%= link_to 'Sign In', new_user_session_path %></li>
+      <%- end -%>
+    </ul>
+  </section>
+</nav>
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
@@ -39,14 +71,14 @@
   <%= yield %>
 
   <%= javascript_include_tag 'application' %>
-  
-  <%- if Rails.env.development? || Rails.env.test? -%> 
+
+  <%- if Rails.env.development? || Rails.env.test? -%>
     <%= javascript_tag do %>
       window.railsEnv = '<%= Rails.env %>'
     <%- end -%>
   <%- end -%>
   <%= javascript_pack_tag 'application' %>
-  
+
   <%= yield :extra_footer %>
 </body>
 </html>
