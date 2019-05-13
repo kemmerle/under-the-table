@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 import BostonIndexTile from "../components/BostonIndexTile"
 
-class IndexContainer extends Component {
+class BostonIndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,4 +50,4 @@ class IndexContainer extends Component {
   }
 }
 
-export default IndexContainer
+export default BostonIndexContainer
