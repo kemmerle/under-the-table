@@ -34,9 +34,10 @@
   </ul>
 
   <section class="top-bar-section">
+    <%= image_tag "Logo.png", :class => "logo" %>
     <ul class="right">
       <%- if current_user -%>
-        <li class="username"> <%= current_user.username %> </li> 
+        <li class="username"> <%= current_user.username %> </li>
         <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
       <%- else -%>
         <li><%= link_to 'Sign Up', new_user_registration_path %></li>
