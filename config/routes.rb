@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get 'cambridge_restaurants/search', to: 'cambridge_restaurants#search'
   resources :boston_restaurants, only: [:index, :show, :search]
   resources :cambridge_restaurants, only: [:index, :show, :search]
-  resources :posts, only: [:index, :show, :new, :create]
+  resources :posts, only: [:index, :show, :new, :create] do
+    resources :replies, only: [:index, :show, :new, :create]
+  end
 
   namespace :api do
     namespace :v1 do
