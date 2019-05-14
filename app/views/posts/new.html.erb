@@ -1,0 +1,26 @@
+<div class="post-form">
+  <h1> Post Something! </h1>
+
+<%= form_for(@post) do |f| %>
+  <div class="post-field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="post-field">
+    <%= f.label :body, "Post:" %><br />
+    <%= f.text_field :body %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%- flash.each do |key, value| -%>
+<div id="flash-error" class="flash flash-<%= key %>">
+  <%= value %>
+</div>
+<%- end -%>
+
+</div>
