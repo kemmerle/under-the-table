@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from 'react-router';
 
-import SearchField from "../components/SearchField";
+import BostonSearchField from "../components/SearchField";
 
-class SearchForm extends Component {
+class BostonSearchForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,7 +52,7 @@ class SearchForm extends Component {
     return(
       <div>
       <form className="SearchForm" onSubmit={this.handleSubmit}>
-        <SearchField
+        <BostonSearchField
           label="Search by restaurant name or inspector comment"
           name="query"
           content={this.state.query}
@@ -72,4 +72,4 @@ class SearchForm extends Component {
   }
 }
 
-export default SearchForm;
+export default BostonSearchForm;
