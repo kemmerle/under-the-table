@@ -290,5 +290,10 @@
 
 .username {
   color: white;
-  padding: 10px; 
+  padding: 10px;
+}
+
+.logo {
+  height: 45px;
+  float: middle;
 }
