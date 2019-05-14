@@ -8,29 +8,29 @@
 
 require 'csv'
 
-# csv_text_boston = File.read(Rails.root.join('lib', 'seeds', 'boston_restaurants_data.csv'))
-# csv_one = CSV.parse(csv_text_boston, :headers => true, :encoding => 'ISO-8859-1')
-# csv_one.each do |row|
-#   t = BostonRestaurant.new
-#   t.businessname = row['businessname']
-#   t.legalowner = row['legalowner']
-#   t.namelast = row['namelast']
-#   t.namefirst = row['namefirst']
-#   t.licenseno = row['licenseno']
-#   t.licstatus = row['licstatus']
-#   t.resultdttm = row['resultdttm']
-#   t.viollevel = row['viollevel']
-#   t.violdesc = row['violdesc']
-#   t.violstatus = row['violstatus']
-#   t.statusdate = row['statusdate']
-#   t.comments = row['comments']
-#   t.address = row['address']
-#   t.city = row['city']
-#   t.state = row['state']
-#   t.zip = row['zip']
-#   t.location = row['location']
-#   t.save
-# end
+csv_text_boston = File.read(Rails.root.join('lib', 'seeds', 'boston_restaurants_data.csv'))
+csv_one = CSV.parse(csv_text_boston, :headers => true, :encoding => 'ISO-8859-1')
+csv_one.each do |row|
+  t = BostonRestaurant.new
+  t.businessname = row['businessname']
+  t.legalowner = row['legalowner']
+  t.namelast = row['namelast']
+  t.namefirst = row['namefirst']
+  t.licenseno = row['licenseno']
+  t.licstatus = row['licstatus']
+  t.resultdttm = row['resultdttm']
+  t.viollevel = row['viollevel']
+  t.violdesc = row['violdesc']
+  t.violstatus = row['violstatus']
+  t.statusdate = row['statusdate']
+  t.comments = row['comments']
+  t.address = row['address']
+  t.city = row['city']
+  t.state = row['state']
+  t.zip = row['zip']
+  t.location = row['location']
+  t.save
+end
 
 csv_text_cambridge = File.read(Rails.root.join('lib', 'seeds', 'cambridge_restaurants_data.csv'))
 csv_two = CSV.parse(csv_text_cambridge, :headers => true, :encoding => 'ISO-8859-1')
