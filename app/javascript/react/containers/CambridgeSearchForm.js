@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router';
 
-import CambridgeSearchField from "../components/SearchField";
+import CambridgeSearchField from "../components/CambridgeSearchField";
 
 class CambridgeSearchForm extends Component {
   constructor(props) {
@@ -20,10 +20,12 @@ class CambridgeSearchForm extends Component {
 }
 
 handleSubmit(event) {
+  debugger
   event.preventDefault()
   const body = JSON.stringify({
     query: this.state.query
   })
+  debugger
   fetch('/api/v1/cambridge_restaurants/search.json', {
     method: 'POST',
     body: body,
@@ -32,6 +34,7 @@ handleSubmit(event) {
   })
   .then(response => response.json())
   .then(body => {
+    debugger
     this.setState({ restaurants: body })
   })
 }
@@ -40,7 +43,7 @@ handleSubmit(event) {
     const cambridgeRestaurants = this.state.restaurants.map(restaurant => {
     return(
       <li key={restaurant.id}>
-      <Link to={`/cambridge_restaurants/${restaurant.id}`}>{`${restaurant.businessname}`}</Link>
+      <Link to={`/cambridge_restaurants/${restaurant.id}`}>{`${restaurant.establishment_name}`}</Link>
       </li>
     )
   })
