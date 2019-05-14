@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import { Link } from 'react-router'
 
-import BostonIndexTile from "../components/BostonIndexTile"
+import CambridgeIndexTile from "../components/CambridgeIndexTile"
 
-class IndexContainer extends Component {
+class CambridgeIndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bostonRestaurants: []
+      cambridgeRestaurants: []
     }
   }
 
   componentDidMount() {
-  fetch("/api/v1/boston_restaurants")
+  fetch("/api/v1/cambridge_restaurants")
     .then(response => {
       if (response.ok) {
         return response;
@@ -25,29 +25,28 @@ class IndexContainer extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        bostonRestaurants: body
+        cambridgeRestaurants: body
       });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
 }
 
   render() {
-    let bostonIndexRestaurants = this.state.bostonRestaurants.map(restaurant => {
+    let cambridgeIndexRestaurants = this.state.cambridgeRestaurants.map(restaurant => {
       return(
-        <BostonIndexTile
+        <CambridgeIndexTile
           key={restaurant.id}
           id={restaurant.id}
-          businessName={restaurant.businessname}
+          businessName={restaurant.establishment_name}
         />
       )
     });
     return(
       <div>
-      <Link to={`/boston_restaurants/search`}>Search for Restaurant Reports!</Link>
-        {bostonIndexRestaurants}
+        {cambridgeIndexRestaurants}
       </div>
     )
   }
 }
 
-export default IndexContainer
+export default CambridgeIndexContainer

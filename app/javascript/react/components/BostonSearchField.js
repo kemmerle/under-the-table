@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchField = (props) => {
+const BostonSearchField = (props) => {
   return (
     <label>{props.label}
       <textarea
@@ -12,4 +12,4 @@ const SearchField = (props) => {
   );
 }
 
-export default SearchField;
+export default BostonSearchField;
