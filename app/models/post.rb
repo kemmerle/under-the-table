@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
-  validates :title, presence: true
-  validates :body, presence: true
-  validates :user, presence: true  
+  validates :title, presence: true, length: { minimum: 10 }
+  validates :body, presence: true, length: { minimum: 50 }
+
+  belongs_to :user 
 end

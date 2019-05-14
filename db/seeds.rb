@@ -49,5 +49,14 @@ if CambridgeRestaurant.all.size == 0
   end
 end
 
-puts "There are now #{BostonRestaurant.count} rows in the Boston table and
-#{CambridgeRestaurant.count} in the Cambridge table"
+if Rails.env.development? || Rails.env.production?
+  AdminSeeder.seed!
+end
+
+if Rails.env.development? || Rails.env.production?
+  PostSeeder.seed!
+end
+
+puts "There are now #{BostonRestaurant.count} rows in the Boston table,
+#{CambridgeRestaurant.count} in the Cambridge table, #{User.count} users,
+and #{Post.count} posts."

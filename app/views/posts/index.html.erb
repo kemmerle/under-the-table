@@ -1,0 +1,11 @@
+<h1>Message Board</h1>
+
+<ul>
+  <% if @posts %>
+    <% @posts.each do |post| %>
+      <li>
+          <a href="/posts/<%=post.id%>"> <%= post.title%> </a>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
