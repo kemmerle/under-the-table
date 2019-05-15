@@ -39,7 +39,7 @@ handleSubmit(event) {
   render() {
     const cambridgeRestaurants = this.state.restaurants.map(restaurant => {
     return(
-      <li key={restaurant.id}>
+      <li key={restaurant.id} className="searchResults">
       <Link to={`/cambridge_restaurants/${restaurant.id}`}>{`${restaurant.establishment_name}`}</Link>
       </li>
     )

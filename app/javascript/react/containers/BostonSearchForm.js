@@ -53,7 +53,7 @@ class BostonSearchForm extends Component {
   render() {
     const bostonRestaurants = this.state.restaurants.map(restaurant => {
     return(
-      <li key={restaurant._id}>
+      <li key={restaurant._id} className="searchResults">
       <Link to={`/boston_restaurants/${restaurant.licenseno}`}>{`${restaurant.businessname}`}</Link>
       </li>
     )
