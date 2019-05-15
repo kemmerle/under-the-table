@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'boston_restaurants#index'
+  root 'restaurants#index'
   devise_for :users
 
   get 'restaurants/', to: 'restaurants#index'

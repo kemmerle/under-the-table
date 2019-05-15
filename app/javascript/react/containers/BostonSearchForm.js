@@ -51,7 +51,7 @@ class BostonSearchForm extends Component {
 
     return(
       <div>
-      <form className="SearchForm" onSubmit={this.handleSubmit}>
+      <form className="searchForm" onSubmit={this.handleSubmit}>
         <BostonSearchField
           label="Search by restaurant name or inspector comment"
           name="query"
