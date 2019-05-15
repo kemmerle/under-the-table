@@ -297,3 +297,7 @@
   height: 45px;
   float: middle;
 }
+
+.searchForm {
+  text-align: center;  
+}

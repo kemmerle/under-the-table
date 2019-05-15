@@ -50,7 +50,7 @@ handleSubmit(event) {
 
     return(
       <div>
-      <form className="SearchForm" onSubmit={this.handleSubmit}>
+      <form className="searchForm" onSubmit={this.handleSubmit}>
         <CambridgeSearchField
           label="Search by restaurant name or inspector comment"
           name="query"
