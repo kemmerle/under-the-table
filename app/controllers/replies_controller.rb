@@ -6,7 +6,8 @@ class RepliesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @reply = Reply.new reply_params.merge(user: current_user)
+    @reply = Reply.new(reply_params)
+    @reply.user_id = current_user.id 
     @reply.post = @post
 
     if @reply.save
