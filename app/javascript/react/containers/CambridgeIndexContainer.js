@@ -43,6 +43,9 @@ class CambridgeIndexContainer extends Component {
     });
     return(
       <div>
+      <header>
+        <img src="/Cambridge-Header.png" className="header" alt="CambridgeHeader"/>
+      </header>
         {cambridgeIndexRestaurants}
       </div>
     )

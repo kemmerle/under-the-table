@@ -299,5 +299,21 @@
 }
 
 .searchForm {
-  text-align: center;  
+  margin: 20px 15% 0 15%;
+}
+
+.submit-button {
+  text-align: right;
+  background-color: #000000;
+  color: white;
+  font-family: 'Noto Serif', serif;
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.indexRestaurants {
+  text-align: center;
+  list-style-type: none;
+  font-weight: 300;
+  font-size: 20px;
 }

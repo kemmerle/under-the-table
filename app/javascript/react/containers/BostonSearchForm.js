@@ -51,6 +51,9 @@ class BostonSearchForm extends Component {
 
     return(
       <div>
+      <header>
+        <img src="/Boston-Header.png" className="bostonHeader" alt="BostonHeader"/>
+      </header>
       <form className="searchForm" onSubmit={this.handleSubmit}>
         <BostonSearchField
           label="Search by restaurant name or inspector comment"

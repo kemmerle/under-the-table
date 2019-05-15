@@ -50,6 +50,9 @@ handleSubmit(event) {
 
     return(
       <div>
+      <header>
+        <img src="/Cambridge-Header.png" className="header" alt="CambridgeHeader"/>
+      </header>
       <form className="searchForm" onSubmit={this.handleSubmit}>
         <CambridgeSearchField
           label="Search by restaurant name or inspector comment"
