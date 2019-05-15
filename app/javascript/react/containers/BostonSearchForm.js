@@ -21,8 +21,18 @@ class BostonSearchForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    fetch(`https://data.boston.gov/api/3/action/datastore_search?resource_id=4582bec6-2b4f-4f9e-bc55-cbaa73117f4c&q=${this.state.query}`, {
-      mode: "cors"
+    let formPayload = {
+     query: this.state.query
+   };
+   const body = JSON.stringify({ formPayload })
+    fetch("/api/v1/boston_restaurants/search", {
+      method: "POST",
+      body: body,
+      credentials: "same-origin",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
     })
       .then(response => {
         if (response.ok) {
