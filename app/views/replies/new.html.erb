@@ -1,0 +1,19 @@
+<h1>Write a reply!</h1>
+
+<% if @reply.errors %>
+  <ul>
+    <% @reply.errors.full_messages.each do |message| %>
+      <li>
+        <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@post, @reply] do |f| %>
+<%= f.label :body, "Reply:" %>
+<%= f.text_field :body %>
+</br>
+
+<%= f.submit "Submit your reply!" %>
+<% end %>
