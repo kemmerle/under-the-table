@@ -20,12 +20,10 @@ class CambridgeSearchForm extends Component {
 }
 
 handleSubmit(event) {
-  debugger
   event.preventDefault()
   const body = JSON.stringify({
     query: this.state.query
   })
-  debugger
   fetch('/api/v1/cambridge_restaurants/search.json', {
     method: 'POST',
     body: body,
@@ -34,7 +32,6 @@ handleSubmit(event) {
   })
   .then(response => response.json())
   .then(body => {
-    debugger
     this.setState({ restaurants: body })
   })
 }
