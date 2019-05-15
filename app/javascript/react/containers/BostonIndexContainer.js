@@ -43,8 +43,12 @@ class BostonIndexContainer extends Component {
     });
     return(
       <div>
-      <Link to={`/boston_restaurants/search`}>Search for Restaurant Reports!</Link>
+      <header>
+        <img src="/Boston-Header.png" className="header" alt="BostonHeader"/>
+      </header>
+      <div className="indexRestaurants">
         {bostonIndexRestaurants}
+      </div>
       </div>
     )
   }

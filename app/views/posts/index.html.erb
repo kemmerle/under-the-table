@@ -1,15 +1,17 @@
 <div class="message-board">
 <h1>Message Board</h1>
 
-<button><a href="/posts/new">Post Something!</a></button>
-
 <ul>
   <% if @posts %>
     <% @posts.each do |post| %>
-      <li>
-          <a href="/posts/<%=post.id%>"> <%= post.title%> </a>
+      <li class="posts-links">
+          <a href="/posts/<%=post.id%>"> <%= post.title%> </a> <br/>
+          <%= post.user.username %> <%= post.created_at.strftime("%B %d %Y") %>
       </li>
     <% end %>
   <% end %>
 </ul>
+
+<button class="posts-button"><a href="/posts/new">Post Something!</a></button>
+
 </div>

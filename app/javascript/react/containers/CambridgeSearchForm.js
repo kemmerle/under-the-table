@@ -39,7 +39,7 @@ handleSubmit(event) {
   render() {
     const cambridgeRestaurants = this.state.restaurants.map(restaurant => {
     return(
-      <li key={restaurant.id}>
+      <li key={restaurant.id} className="searchResults">
       <Link to={`/cambridge_restaurants/${restaurant.id}`}>{`${restaurant.establishment_name}`}</Link>
       </li>
     )
@@ -47,6 +47,9 @@ handleSubmit(event) {
 
     return(
       <div>
+      <header>
+        <img src="/Cambridge-Header.png" className="header" alt="CambridgeHeader"/>
+      </header>
       <form className="searchForm" onSubmit={this.handleSubmit}>
         <CambridgeSearchField
           label="Search by restaurant name or inspector comment"

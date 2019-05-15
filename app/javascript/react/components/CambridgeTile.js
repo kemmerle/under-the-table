@@ -2,7 +2,7 @@ import React from 'react';
 
 const CambridgeTile = (props) => {
   return(
-    <div>
+    <div className="tile">
       <div className="businessDetails">
         <h3>
           {props.establishmentName}

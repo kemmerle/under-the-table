@@ -299,5 +299,71 @@
 }
 
 .searchForm {
-  text-align: center;  
+  margin: 20px 15% 0 15%;
+}
+
+.searchResults {
+  list-style-type: none;
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.submit-button {
+  text-align: right;
+  background-color: #000000;
+  color: white;
+  font-family: 'Noto Serif', serif;
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.indexRestaurants {
+  text-align: center;
+  list-style-type: none;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.businessDetails {
+  font-family: 'Noto Serif', serif;
+  font-weight: 300;
+  font-size: 25px;
+  padding: 20px;
+}
+
+.businessDetails h3 {
+  font-family: 'Noto Serif', serif;
+  font-weight: 300;
+  font-size: 25px;
+}
+
+.reportDetails {
+  font-family: 'Noto Serif', serif;
+  padding: 20px;
+}
+
+.tile {
+  border: 1px solid rgba(0, 0, 0, .2);
+  width: 600px;
+  margin: auto;
+}
+
+.message-board {
+  padding: 20px;
+}
+
+.message-board h1 {
+  padding: 30px;
+}
+
+.posts-button {
+  background-color: #000000;
+  color: white;
+  font-family: 'Noto Serif', serif;
+}
+
+.posts-links {
+  list-style-type: none;
+  border: 1px solid rgba(0, 0, 0, .2);
+  padding: 20px;
 }

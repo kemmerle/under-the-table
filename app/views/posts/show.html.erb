@@ -1,23 +1,28 @@
 <body>
-  <h1><%=@post.title%></h1>
+  <div class="message-board">
+    <div class="posts-links">
+    <h1><%=@post.title%></h1>
 
-  <p> <%= @post.body %> </p>
+    <p> <%= @post.body %> </p>
+    </div>
 
-  <% if @post.replies %>
-  <h1> Replies: </h1>
+    <% if @post.replies %>
+    <h1> Replies: </h1>
 
-  <% @post.replies.each do |reply| %>
+    <% @post.replies.each do |reply| %>
+    <div class="posts-links>"
       <p>
-      <%= reply.body %> <br/>
-       Date: <%= reply.created_at.strftime("%B %d %Y") %>
-      </p>
+        <%= reply.body %> <br/>
+         Date: <%= reply.created_at.strftime("%B %d %Y") %>
+        </p>
+    </div>  
+    <% end %>
+  <% end  %>
 
-  <% end %>
-<% end  %>
+  <br/>
+  <%= link_to "Write a reply!", new_post_reply_path(@post, @replies) %>
+  <br/>
 
-<br/>
-<%= link_to "Write a reply!", new_post_reply_path(@post, @replies) %>
-<br/>
-
-  <script src="/javascripts/app.js"></script>
+    <script src="/javascripts/app.js"></script>
+  </div>
 </body>

@@ -53,7 +53,7 @@ class BostonSearchForm extends Component {
   render() {
     const bostonRestaurants = this.state.restaurants.map(restaurant => {
     return(
-      <li key={restaurant._id}>
+      <li key={restaurant._id} className="searchResults">
       <Link to={`/boston_restaurants/${restaurant.licenseno}`}>{`${restaurant.businessname}`}</Link>
       </li>
     )
@@ -61,6 +61,9 @@ class BostonSearchForm extends Component {
 
     return(
       <div>
+      <header>
+        <img src="/Boston-Header.png" className="bostonHeader" alt="BostonHeader"/>
+      </header>
       <form className="searchForm" onSubmit={this.handleSubmit}>
         <BostonSearchField
           label="Search by restaurant name or inspector comment"
