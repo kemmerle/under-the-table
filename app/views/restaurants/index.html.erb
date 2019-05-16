@@ -22,6 +22,13 @@
                 <h4>Quick Links</h4>
                   <div class="links-list">
                     <ul>
+                        <form action="/boston_restaurants/search">
+                          <input type="radio" name="search-option" value="Location" checked> Location
+                          <input type="radio" name="search-option" value="Boston"> Boston
+                          <input type="radio" name="search-option" value="Cambridge"> Cambridge
+                          <input type="text" name="query" placeholder="Search Boston" class="searchbox">
+                          <button type="submit" id="edit-submit" value="Search" class="form-submit">Search</button>
+                        </form>
                         <a href="/boston_restaurants/search">Search Boston Restaurants</a> <br/>
                         <a href="/cambridge_restaurants/search">Search Cambridge Restaurants</a> <br/>
                         <a href="/posts">Message Boards</a> <br/>

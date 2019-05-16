@@ -353,6 +353,12 @@
 }
 
 .message-board h1 {
+  font-family: 'Noto Serif', serif;
+  padding: 30px;
+}
+
+.message-board h3 {
+  font-family: 'Noto Serif', serif;
   padding: 30px;
 }
 
@@ -366,4 +372,15 @@
   list-style-type: none;
   border: 1px solid rgba(0, 0, 0, .2);
   padding: 20px;
+}
+
+.posts-links-bold {
+  list-style-type: none;
+  border: 3px solid rgba(0, 0, 0, 1);
+  padding: 20px;
+}
+
+.reply-title h3 {
+  font-family: 'Noto Serif', serif;
+  padding: 50px;
 }

@@ -10,31 +10,60 @@ class CambridgeSearchForm extends Component {
       restaurants: [],
       query: ""
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this)
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this)
   };
 
-  handleChange(event) {
-    const newQuery = event.target.value
-   this.setState({ query: newQuery })
-}
-
-handleSubmit(event) {
-  event.preventDefault()
-  const body = JSON.stringify({
-    query: this.state.query
-  })
-  fetch('/api/v1/cambridge_restaurants/search.json', {
-    method: 'POST',
-    body: body,
-    credentials: 'same-origin',
-    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
-  })
-  .then(response => response.json())
-  .then(body => {
-    this.setState({ restaurants: body })
-  })
-}
+  componentDidMount() {
+    let search = window.location.search;
+    let params = new URLSearchParams(search);
+    let query = params.get('query');
+    const body = JSON.stringify({ formPayload: {query: query }})
+     fetch("/api/v1/cambridge_restaurants/search.json", {
+       method: "POST",
+       body: body,
+       credentials: "same-origin",
+       headers: {
+         Accept: "application/json",
+         "Content-Type": "application/json"
+       }
+     })
+       .then(response => {
+         if (response.ok) {
+           return response;
+         } else {
+           let errorMessage = `${response.status}(${response.statusText})` ,
+           error = new Error(errorMessage);
+           throw(error);
+         }
+         })
+         .then(response => response.json())
+         .then(body => {
+           this.setState({ restaurants: body })
+         })
+         .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+//   handleChange(event) {
+//     const newQuery = event.target.value
+//    this.setState({ query: newQuery })
+// }
+//
+// handleSubmit(event) {
+//   event.preventDefault()
+//   const body = JSON.stringify({
+//     query: this.state.query
+//   })
+//   fetch('/api/v1/cambridge_restaurants/search.json', {
+//     method: 'POST',
+//     body: body,
+//     credentials: 'same-origin',
+//     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+//   })
+//   .then(response => response.json())
+//   .then(body => {
+//     this.setState({ restaurants: body })
+//   })
+// }
 
   render() {
     const cambridgeRestaurants = this.state.restaurants.map(restaurant => {
@@ -50,21 +79,6 @@ handleSubmit(event) {
       <header>
         <img src="/Cambridge-Header.png" className="header" alt="CambridgeHeader"/>
       </header>
-      <form className="searchForm" onSubmit={this.handleSubmit}>
-        <CambridgeSearchField
-          label="Search by restaurant name or inspector comment"
-          name="query"
-          content={this.state.query}
-          onChange={this.handleChange}
-        />
-
-        <input
-          id="submit-button"
-          className="submit-button"
-          type="submit"
-          value="Submit"
-        />
-      </form>
         <ul>{cambridgeRestaurants}</ul>
       </div>
     )

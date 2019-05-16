@@ -1,17 +1,19 @@
-<div class="message-board">
-<h1>Message Board</h1>
-
-<ul>
-  <% if @posts %>
-    <% @posts.each do |post| %>
-      <li class="posts-links">
-          <a href="/posts/<%=post.id%>"> <%= post.title%> </a> <br/>
-          <%= post.user.username %> <%= post.created_at.strftime("%B %d %Y") %>
-      </li>
+<body>
+  <header>
+    <%= image_tag "Posts-Header.jpg", :class => "imageToSpan" %>
+  </header>
+  <div class="message-board">
+  <ul>
+    <% if @posts %>
+      <% @posts.each do |post| %>
+        <li class="posts-links">
+            <a href="/posts/<%=post.id%>"> <%= post.title%> </a> <br/>
+            <%= post.user.username %> <%= post.created_at.strftime("%B %d %Y") %>
+        </li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
 
-<button class="posts-button"><a href="/posts/new">Post Something!</a></button>
-
-</div>
+  <button class="posts-button"><a href="/posts/new">Post Something!</a></button>
+  </div>
+</body>
