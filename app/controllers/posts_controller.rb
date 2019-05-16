@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authorize_user, except: [:index, :show]
 
   def index
-    @posts = Post.all
+    @posts = Post.all     
   end
 
   def show
@@ -15,7 +15,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new post_params.merge(user: current_user)
-
     if @post.save
       redirect_to posts_path
       flash[:notice] = "Your post has been added successfully"
@@ -38,7 +37,7 @@ class PostsController < ApplicationController
   def authorize_user
     if !user_signed_in? || !current_user.admin?
       flash[:notice] = "You must be signed in to create a new post"
-      redirect_to posts_path 
+      redirect_to posts_path
     end
   end
 end

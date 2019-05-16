@@ -6,7 +6,7 @@ class CambridgeShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurant: {}
+      restaurants: []
     }
   }
 
@@ -24,28 +24,36 @@ class CambridgeShowContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
+        debugger 
         this.setState({
-          restaurant: body
+          restaurants: body.restaurants
         });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
+    const selectedReports = this.state.restaurants.map(restaurant => {
     return(
       <div>
         <CambridgeTile
-          key={this.state.restaurant._id}
-          id={this.state.restaurant._id}
-          establishmentName={this.state.restaurant.establishment_name}
-          address={this.state.restaurant.address}
-          codeDescription={this.state.restaurant.code_description}
-          status={this.state.restaurant.status}
-          dateCited={this.state.restaurant.date_cited}
-          dateCorrected={this.state.restaurant.date_corrected}
+          key={restaurant.id}
+          id={restaurant.id}
+          establishmentName={restaurant.establishment_name}
+          address={restaurant.address}
+          codeDescription={restaurant.code_description}
+          status={restaurant.status}
+          dateCited={restaurant.date_cited}
+          dateCorrected={restaurant.date_corrected}
          />
       </div>
     )
+   })
+   return(
+     <div>
+     {selectedReports}
+     </div>
+   )
   }
 }
 
