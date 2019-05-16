@@ -24,7 +24,6 @@ class CambridgeShowContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        debugger 
         this.setState({
           restaurants: body.restaurants
         });

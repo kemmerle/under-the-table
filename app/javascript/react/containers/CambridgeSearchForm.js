@@ -53,7 +53,6 @@ class CambridgeSearchForm extends Component {
          })
          .then(response => response.json())
          .then(body => {
-           debugger
            this.setState({ restaurants: this.filterResults(body.cambridge_restaurants) })
          })
          .catch(error => console.error(`Error in fetch: ${error.message}`));
