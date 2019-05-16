@@ -8,6 +8,7 @@ class BostonShowContainer extends Component {
     this.state = {
       restaurants: []
     }
+    this.computeScore = this.computeScore.bind(this)
   }
 
   componentDidMount() {
@@ -29,6 +30,17 @@ class BostonShowContainer extends Component {
         });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+  computeScore(array){
+    var failCount = 0
+    var total = array.length
+    array.forEach(function(restaurant) {
+      if (restaurant.violstatus == "Fail") {
+        failCount++
+      }
+    })
+    return (failCount / total) * 100
   }
 
   render() {
@@ -54,9 +66,12 @@ class BostonShowContainer extends Component {
   })
     return(
       <div>
-        {name} <br/>
-        {address} <br/>
-        {city}
+        <div className="restaurantInfo">
+          {name} <br/>
+          {address} <br/>
+          {city} <br/>
+          {Math.round(this.computeScore(this.state.restaurants))}% FAILURE RATE
+        </div>  
         <ul>{selectedRestaurants}</ul>
       </div>
     )

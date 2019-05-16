@@ -10,9 +10,23 @@ class CambridgeSearchForm extends Component {
       restaurants: [],
       query: ""
     }
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this)
+    this.filterResults = this.filterResults.bind(this)
   };
+
+  filterResults(array) {
+    var seen = {};
+    var out = [];
+    var len = array.length;
+    var j = 0;
+    for(var i = 0; i < len; i++) {
+      var item = array[i];
+      if(seen[item] !== 1) {
+        seen[item] = 1;
+        out[j++] = item;
+      }
+    }
+    return out;
+  }
 
   componentDidMount() {
     let search = window.location.search;
@@ -39,46 +53,31 @@ class CambridgeSearchForm extends Component {
          })
          .then(response => response.json())
          .then(body => {
-           this.setState({ restaurants: body })
+           this.setState({ restaurants: this.filterResults(body) })
          })
          .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
-//   handleChange(event) {
-//     const newQuery = event.target.value
-//    this.setState({ query: newQuery })
-// }
-//
-// handleSubmit(event) {
-//   event.preventDefault()
-//   const body = JSON.stringify({
-//     query: this.state.query
-//   })
-//   fetch('/api/v1/cambridge_restaurants/search.json', {
-//     method: 'POST',
-//     body: body,
-//     credentials: 'same-origin',
-//     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
-//   })
-//   .then(response => response.json())
-//   .then(body => {
-//     this.setState({ restaurants: body })
-//   })
-// }
 
   render() {
     const cambridgeRestaurants = this.state.restaurants.map(restaurant => {
     return(
       <li key={restaurant.id} className="searchResults">
-      <Link to={`/cambridge_restaurants/${restaurant.id}`}>{`${restaurant.establishment_name}`}</Link>
+        <Link to={`/cambridge_restaurants/${restaurant.id}`}>{`${restaurant.establishment_name}`}</Link>
+        <br/> {restaurant.address}
+        <br/> {restaurant.city}
       </li>
     )
   })
-
     return(
       <div>
       <header>
         <img src="/Cambridge-Header.png" className="header" alt="CambridgeHeader"/>
       </header>
+      <div className="searchTitle">
+        <h1>
+          SEARCH RESULTS
+        </h1>
+      </div>
         <ul>{cambridgeRestaurants}</ul>
       </div>
     )

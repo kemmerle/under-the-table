@@ -10,9 +10,23 @@ class BostonSearchForm extends Component {
       restaurants: [],
       query: ""
     }
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this)
+    this.filterResults = this.filterResults.bind(this)
   };
+
+  filterResults(array) {
+    var seen = {};
+    var out = [];
+    var len = array.length;
+    var j = 0;
+    for(var i = 0; i < len; i++) {
+      var item = array[i];
+      if(seen[item] !== 1) {
+        seen[item] = 1;
+        out[j++] = item;
+      }
+    }
+    return out;
+  }
 
   componentDidMount() {
     let search = window.location.search;
@@ -39,60 +53,31 @@ class BostonSearchForm extends Component {
          })
          .then(response => response.json())
          .then(body => {
-           this.setState({ restaurants: body.result.records })
+           this.setState({ restaurants: this.filterResults(body.result.records) })
          })
          .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
-//   handleChange(event) {
-//     const newQuery = event.target.value
-//    this.setState({ query: newQuery })
-// }
-
-  // handleSubmit(event) {
-  //   event.preventDefault()
-  //   let formPayload = {
-  //    query: this.state.query
-  //  };
-  //  const body = JSON.stringify({ formPayload })
-  //   fetch("/api/v1/boston_restaurants/search", {
-  //     method: "POST",
-  //     body: body,
-  //     credentials: "same-origin",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json"
-  //     }
-  //   })
-  //     .then(response => {
-  //       if (response.ok) {
-  //         return response;
-  //       } else {
-  //         let errorMessage = `${response.status}(${response.statusText})` ,
-  //         error = new Error(errorMessage);
-  //         throw(error);
-  //       }
-  //       })
-  //       .then(response => response.json())
-  //       .then(body => {
-  //         this.setState({ restaurants: body.result.records })
-  //       })
-  //       .catch(error => console.error(`Error in fetch: ${error.message}`));
-  // }
 
   render() {
     const bostonRestaurants = this.state.restaurants.map(restaurant => {
     return(
       <li key={restaurant._id} className="searchResults">
-      <Link to={`/boston_restaurants/${restaurant.licenseno}`}>{`${restaurant.businessname}`}</Link>
+        <Link to={`/boston_restaurants/${restaurant.licenseno}`}>{`${restaurant.businessname}`}</Link>
+        <br/> {restaurant.address}
+        <br/> {restaurant.city}
       </li>
     )
   })
-
     return(
       <div>
-      <header>
-        <img src="/Boston-Header.png" className="bostonHeader" alt="BostonHeader"/>
-      </header>
+        <header>
+          <img src="/Boston-Header.png" className="bostonHeader" alt="BostonHeader"/>
+        </header>
+        <div className="searchTitle">
+          <h1>
+            SEARCH RESULTS
+          </h1>
+        </div>
         <ul>{bostonRestaurants}</ul>
       </div>
     )
