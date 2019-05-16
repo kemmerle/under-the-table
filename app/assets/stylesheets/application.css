@@ -304,7 +304,17 @@
 .searchResults {
   list-style-type: none;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 25px;
+  padding-top: 10px;
+  padding-left: 50px;
+}
+
+.searchTitle h1 {
+  font-family: 'Noto Serif', serif;
+  font-weight: 500;
+  font-size: 25px;
+  padding-top: 10px;
+  padding-left: 50px;
 }
 
 .submit-button {
@@ -421,4 +431,8 @@ main {
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+.restaurantInfo {
+  text-align: center; 
 }
