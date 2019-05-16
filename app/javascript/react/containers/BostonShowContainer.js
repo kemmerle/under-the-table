@@ -32,15 +32,18 @@ class BostonShowContainer extends Component {
   }
 
   render() {
+    var name = "";
+    var address = "";
+    var city = "";
+    if(this.state.restaurants.length>0){name = this.state.restaurants[0].businessname}
+    if(this.state.restaurants.length>0){address = this.state.restaurants[0].address}
+    if(this.state.restaurants.length>0){city = this.state.restaurants[0].city}
     const selectedRestaurants = this.state.restaurants.map(restaurant => {
     return(
       <div>
         <BostonTile
           key={restaurant._id}
           id={restaurant._id}
-          businessName={restaurant.businessname}
-          address={restaurant.address}
-          city={restaurant.city}
           reportDate={restaurant.resultdttm}
           violLevel={restaurant.viollevel}
           violStatus={restaurant.violstatus}
@@ -51,6 +54,9 @@ class BostonShowContainer extends Component {
   })
     return(
       <div>
+        {name} <br/>
+        {address} <br/>
+        {city}
         <ul>{selectedRestaurants}</ul>
       </div>
     )

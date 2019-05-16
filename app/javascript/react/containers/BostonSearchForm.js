@@ -10,45 +10,74 @@ class BostonSearchForm extends Component {
       restaurants: [],
       query: ""
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this)
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this)
   };
 
-  handleChange(event) {
-    const newQuery = event.target.value
-   this.setState({ query: newQuery })
-}
-
-  handleSubmit(event) {
-    event.preventDefault()
-    let formPayload = {
-     query: this.state.query
-   };
-   const body = JSON.stringify({ formPayload })
-    fetch("/api/v1/boston_restaurants/search", {
-      method: "POST",
-      body: body,
-      credentials: "same-origin",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
-    })
-      .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status}(${response.statusText})` ,
-          error = new Error(errorMessage);
-          throw(error);
-        }
-        })
-        .then(response => response.json())
-        .then(body => {
-          this.setState({ restaurants: body.result.records })
-        })
-        .catch(error => console.error(`Error in fetch: ${error.message}`));
+  componentDidMount() {
+    let search = window.location.search;
+    let params = new URLSearchParams(search);
+    let query = params.get('query');
+    const body = JSON.stringify({ formPayload: {query: query }})
+     fetch("/api/v1/boston_restaurants/search", {
+       method: "POST",
+       body: body,
+       credentials: "same-origin",
+       headers: {
+         Accept: "application/json",
+         "Content-Type": "application/json"
+       }
+     })
+       .then(response => {
+         if (response.ok) {
+           return response;
+         } else {
+           let errorMessage = `${response.status}(${response.statusText})` ,
+           error = new Error(errorMessage);
+           throw(error);
+         }
+         })
+         .then(response => response.json())
+         .then(body => {
+           this.setState({ restaurants: body.result.records })
+         })
+         .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
+//   handleChange(event) {
+//     const newQuery = event.target.value
+//    this.setState({ query: newQuery })
+// }
+
+  // handleSubmit(event) {
+  //   event.preventDefault()
+  //   let formPayload = {
+  //    query: this.state.query
+  //  };
+  //  const body = JSON.stringify({ formPayload })
+  //   fetch("/api/v1/boston_restaurants/search", {
+  //     method: "POST",
+  //     body: body,
+  //     credentials: "same-origin",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json"
+  //     }
+  //   })
+  //     .then(response => {
+  //       if (response.ok) {
+  //         return response;
+  //       } else {
+  //         let errorMessage = `${response.status}(${response.statusText})` ,
+  //         error = new Error(errorMessage);
+  //         throw(error);
+  //       }
+  //       })
+  //       .then(response => response.json())
+  //       .then(body => {
+  //         this.setState({ restaurants: body.result.records })
+  //       })
+  //       .catch(error => console.error(`Error in fetch: ${error.message}`));
+  // }
 
   render() {
     const bostonRestaurants = this.state.restaurants.map(restaurant => {
@@ -64,21 +93,6 @@ class BostonSearchForm extends Component {
       <header>
         <img src="/Boston-Header.png" className="bostonHeader" alt="BostonHeader"/>
       </header>
-      <form className="searchForm" onSubmit={this.handleSubmit}>
-        <BostonSearchField
-          label="Search by restaurant name or inspector comment"
-          name="query"
-          content={this.state.query}
-          onChange={this.handleChange}
-        />
-
-        <input
-          id="submit-button"
-          className="submit-button"
-          type="submit"
-          value="Submit"
-        />
-      </form>
         <ul>{bostonRestaurants}</ul>
       </div>
     )

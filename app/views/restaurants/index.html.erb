@@ -1,33 +1,38 @@
 <body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-    <div class="spanImage">
-      <div class="imageText">
-        <h5> <a href="#quick-links" class="mdl-layout__tab is-active">Quick Links</a> </h5> <br/>
-        <h5> <a href="#overview" class="mdl-layout__tab is-active">Mission</a> </h5> <br/>
-        <h5> <a href="#boston" class="mdl-layout__tab">Boston</a> </h5> <br/>
-        <h5> <a href="#cambridge" class="mdl-layout__tab">Cambridge</a> </h5> <br/>
-        <h5> <a href="#boards" class="mdl-layout__tab">Messageboards</a> </h5> <br/>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+      <div class="spanImage">
+        <%= image_tag "Restaurant-Header.jpg", :class => "imageToSpan" %>
       </div>
-      <%= image_tag "Restaurant-Header.jpg", :class => "imageToSpan" %>
+    </header>
+    <div class="sidenav">
+      MESSAGEBOARD
+      Recent Posts
+      <ul>
+        <% if @posts %>
+          <% @posts.each do |post| %>
+            <li>
+              <a href="/posts/<%=post.id%>"> <%= post.title%> </a>
+              <%= post.user.username %> <%= post.created_at.strftime("%B %d %Y") %>
+              <br/>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+      <button class="posts-button"><a href="/posts/new">Post Something!</a></button>
     </div>
-      </header>
       <main class="mdl-layout__content">
         <div class="mdl-layout__tab-panel is-active" id="quick-links">
           <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
             <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
-              <div class="mdl-card__supporting-text">
-                <h4>Quick Links</h4>
-                  <div class="links-list">
-                    <ul>
-                        <a href="/boston_restaurants/search">Search Boston Restaurants</a> <br/>
-                        <a href="/cambridge_restaurants/search">Search Cambridge Restaurants</a> <br/>
-                        <a href="/posts">Message Boards</a> <br/>
-                    </ul>
-                  </div>
-              </div>
+                <h4>Search</h4>
+                        <form action="/boston_restaurants/search">
+                          <input type="radio" name="search-option" value="Location" checked> Location
+                          <input type="radio" name="search-option" value="Boston"> Boston
+                          <input type="radio" name="search-option" value="Cambridge"> Cambridge
+                          <input type="text" name="query" placeholder="Search Boston" class="searchbox">
+                          <button type="submit" id="edit-submit" value="Search" class="form-submit">Search</button>
+                        </form>
             </div>
           </section>
           </div>
@@ -59,58 +64,4 @@
             </div>
           </section>
           </div>
-            <div class="mdl-layout__tab-panel is-active" id="boston">
-              <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-                <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
-                  <div class="mdl-card__supporting-text">
-                    <h4>Boston Restaurants</h4>
-                    <div class="city-info">
-                      Our Boston search engine allows users to search through over
-                      500,000 health inspection reports for restaurants in both downtown
-                      Boston and the greater Boston area.
-                    </div>
-                      <ul class="city-links">
-                        <a href="/boston_restaurants/search">Search Boston Restaurants</a> <br/>
-                        <a href="/boston_restaurants/">Roll the Dice with Random Reports</a>
-                      </ul>
-                  </div>
-                </div>
-              </section>
-            </div>
-            <div class="mdl-layout__tab-panel is-active" id="cambridge">
-              <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-                <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
-                  <div class="mdl-card__supporting-text">
-                    <h4>Cambridge Restaurants</h4>
-                    <div class="city-info">
-                      Our Cambridge search engine allows users to search through nearly
-                      25,000 health inspection reports for restaurants in the
-                      Cambridge area.
-                    </div>
-                    <ul class="city-links">
-                      <a href="/cambridge_restaurants/search">Search Cambridge Restaurants</a> <br/>
-                      <a href="/cambridge_restaurants/">Roll the Dice with Random Reports</a>
-                    </ul>
-                  </div>
-                </div>
-              </section>
-              <div class="mdl-layout__tab-panel is-active" id="boards">
-                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-                  <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
-                    <div class="mdl-card__supporting-text">
-                      <h4>Message Boards</h4>
-                      <div class="city-info">
-                        Our message boards allow users to communicate with one
-                        another directly about their favorite restaurants. Have
-                        a question about a restaurant's atmosphere? Make a post
-                        about it! Have a recommendation for another user? You can
-                        reply to them and give them all the details about your
-                        favorite hot spots.
-                      </div>
-                      <ul class="city-links">
-                        <a href="/posts">Make a post now!</a> <br/>
-                      </ul>
-                    </div>
-                  </div>
-                </section>
         </div>

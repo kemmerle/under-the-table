@@ -3,14 +3,6 @@ import React from 'react';
 const BostonTile = (props) => {
   return(
     <div className="tile">
-      <div className="businessDetails">
-        <h3>
-          {props.businessName}
-        </h3>
-          {props.address} <br/>
-          {props.city}
-      </div>
-        <br/>
       <div className="reportDetails">
         <ul>
           <li> {props.reportDate} </li>

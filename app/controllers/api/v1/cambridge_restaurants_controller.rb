@@ -5,7 +5,10 @@ class Api::V1::CambridgeRestaurantsController < ApplicationController
   end
 
   def search
-    @restaurants = CambridgeRestaurant.where("establishment_name ILIKE ? OR code_description ILIKE ?", "%#{params['query']}%", "%#{params['query']}%")
+    @restaurants = CambridgeRestaurant.where(
+      "establishment_name ILIKE ? OR code_description ILIKE ?",
+      "%#{params["formPayload"]["query"]}%",
+      "%#{params["formPayload"]["query"]}%")
     render json: @restaurants
   end
 

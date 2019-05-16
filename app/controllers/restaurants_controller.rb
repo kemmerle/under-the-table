@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
 
    def index
-     @restaurants = BostonRestaurant.limit(10).order("RANDOM()")
+     @posts = Post.all 
    end
 
 end
