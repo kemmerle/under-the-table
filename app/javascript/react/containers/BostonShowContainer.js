@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import BostonTile from "../components/BostonTile";
+import MapContainer from "./MapContainer"
 
 class BostonShowContainer extends Component {
   constructor(props) {
@@ -49,14 +50,20 @@ class BostonShowContainer extends Component {
     var city = "";
     var loading = "";
     var score = "";
-    if(this.state.restaurants.length>0){name = this.state.restaurants[0].businessname}
-    if(this.state.restaurants.length>0){address = this.state.restaurants[0].address}
-    if(this.state.restaurants.length>0){city = this.state.restaurants[0].city}
-    if(this.state.restaurants.length == 0){loading = "Loading..."}
-    if(this.state.restaurants.length>0){score = Math.round(this.computeScore(this.state.restaurants))}
+    var coordString = "";
+    if(this.state.restaurants.length>0){
+      name = this.state.restaurants[0].businessname;
+      address = this.state.restaurants[0].address;
+      city = this.state.restaurants[0].city;
+      score = Math.round(this.computeScore(this.state.restaurants));
+    };
+    if(this.state.restaurants.length == 0) {loading = "Loading..."}
+    if(this.state.restaurants.length>0 && this.state.restaurants[0].location) {
+      coordString = this.state.restaurants[0].location.match(/\((.*?)\)/)[1].split(',');
+    }
     const selectedRestaurants = this.state.restaurants.map(restaurant => {
     return(
-      <div>
+      <div className="reportList">
         <BostonTile
           key={restaurant._id}
           id={restaurant._id}
@@ -68,18 +75,27 @@ class BostonShowContainer extends Component {
       </div>
     )
   })
+    var lat = Number(coordString[0]);
+    var long = Number(coordString[1]);
     return(
       <div>
         <header>
           <img src="/Boston-Header.png" className="bostonHeader" alt="BostonHeader"/>
         </header>
         <div className="sidenav-show">
-          <h5>
+          <h3>
           {name} <br/>
           {address} <br/>
           {city} <br/>
-          {score} % FAILURE RATE
-          </h5>
+          {score} % Failure Rate
+          </h3>
+        </div>
+        <div className="map-container">
+        < MapContainer
+        lat={lat}
+        long={long}
+        name={name}
+        />
         </div>
         {loading}
         <ul>{selectedRestaurants}</ul>

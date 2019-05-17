@@ -43,7 +43,7 @@ class CambridgeShowContainer extends Component {
       name = this.state.restaurants[0].establishment_name
       address = this.state.restaurants[0].address.replace(/ *\([^)]*\) */g, "")
     };
-    if(this.state.restaurants.length == 0){loading = "Loading..."}
+    if(this.state.restaurants.length == 0) {loading = "Loading..."}
     const selectedReports = this.state.restaurants.map(restaurant => {
     return(
       <div>
