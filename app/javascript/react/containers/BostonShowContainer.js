@@ -47,9 +47,13 @@ class BostonShowContainer extends Component {
     var name = "";
     var address = "";
     var city = "";
+    var loading = "";
+    var score = "";
     if(this.state.restaurants.length>0){name = this.state.restaurants[0].businessname}
     if(this.state.restaurants.length>0){address = this.state.restaurants[0].address}
     if(this.state.restaurants.length>0){city = this.state.restaurants[0].city}
+    if(this.state.restaurants.length == 0){loading = "Loading..."}
+    if(this.state.restaurants.length>0){score = Math.round(this.computeScore(this.state.restaurants))}
     const selectedRestaurants = this.state.restaurants.map(restaurant => {
     return(
       <div>
@@ -66,12 +70,18 @@ class BostonShowContainer extends Component {
   })
     return(
       <div>
-        <div className="restaurantInfo">
+        <header>
+          <img src="/Boston-Header.png" className="bostonHeader" alt="BostonHeader"/>
+        </header>
+        <div className="sidenav-show">
+          <h5>
           {name} <br/>
           {address} <br/>
           {city} <br/>
-          {Math.round(this.computeScore(this.state.restaurants))}% FAILURE RATE
-        </div>  
+          {score} % FAILURE RATE
+          </h5>
+        </div>
+        {loading}
         <ul>{selectedRestaurants}</ul>
       </div>
     )
