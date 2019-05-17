@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
 import CambridgeTile from "../components/CambridgeTile";
+import MapContainer from "./MapContainer"
 
 class CambridgeShowContainer extends Component {
   constructor(props) {
@@ -32,6 +34,16 @@ class CambridgeShowContainer extends Component {
   }
 
   render() {
+    var name = "";
+    var address = "";
+    var loading = "";
+    var coordString = "";
+    if(this.state.restaurants.length>0){
+      coordString = this.state.restaurants[0].address.match(/\((.*?)\)/)[1].split(',');
+      name = this.state.restaurants[0].establishment_name
+      address = this.state.restaurants[0].address.replace(/ *\([^)]*\) */g, "")
+    };
+    if(this.state.restaurants.length == 0){loading = "Loading..."}
     const selectedReports = this.state.restaurants.map(restaurant => {
     return(
       <div>
@@ -39,7 +51,7 @@ class CambridgeShowContainer extends Component {
           key={restaurant.id}
           id={restaurant.id}
           establishmentName={restaurant.establishment_name}
-          address={restaurant.address}
+          address={restaurant.address.replace(/ *\([^)]*\) */g, "")}
           codeDescription={restaurant.code_description}
           status={restaurant.status}
           dateCited={restaurant.date_cited}
@@ -48,9 +60,26 @@ class CambridgeShowContainer extends Component {
       </div>
     )
    })
+   var lat = Number(coordString[0]);
+   var long = Number(coordString[1]);
    return(
      <div>
+       <header>
+         <img src="/Cambridge-Header.png" className="header" alt="CambridgeHeader"/>
+       </header>
+       <div className="sidenav-show">
+         <h5>
+         {name} <br/>
+         {address} <br/>
+         </h5>
+       </div>
+     {loading}
      {selectedReports}
+     < MapContainer
+       lat={lat}
+       long={long}
+       name={name}
+     />
      </div>
    )
   }

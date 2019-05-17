@@ -27,10 +27,9 @@
             <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                 <h4>Search</h4>
                         <form action="/boston_restaurants/search">
-                          <input type="radio" name="search-option" value="Location" checked> Location
-                          <input type="radio" name="search-option" value="Boston"> Boston
+                          <input type="radio" name="search-option" value="Boston" checked> Boston
                           <input type="radio" name="search-option" value="Cambridge"> Cambridge
-                          <input type="text" name="query" placeholder="Search Boston" class="searchbox">
+                          <input type="text" name="query" placeholder="Search for Boston and Cambridge restaurant health inspection reports" class="searchbox">
                           <button type="submit" id="edit-submit" value="Search" class="form-submit">Search</button>
                         </form>
             </div>
@@ -40,26 +39,8 @@
           <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
             <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
               <div class="mdl-card__supporting-text">
-                <h4>Under the Table: Our Mission</h4>
-                <div class="mission-statement">
-                While apps like Yelp can guide users to trendy restaurants, they have
-                one major flaw: they do not list health inspection reports for
-                restaurants. <br/>
-                </div>
-
-                <div class="mission-statement">
-                Making health reports available to the public is especially useful
-                in the Boston/Cambridge area. Under Massachusetts regulations,
-                restaurant management has 48 hours to address any problems raised
-                by a health inspector before that inspector issues a final health grade.
-                This means that a restaurant might have a cockroach infestation
-                in its kitchen but still receive an A Health Grade. <br/>
-                </div>
-
-                <div class="mission-statement">
-                Under the Table helps its users feel confident that they are
-                choosing hip but healthy eateries for a night out. <br/>
-                </div>
+                <h4>Under the Table: Behind the Scenes</h4>
+                  <%= image_tag "Diagram.jpg" %> 
               </div>
             </div>
           </section>

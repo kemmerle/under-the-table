@@ -14,18 +14,13 @@ class BostonSearchForm extends Component {
   };
 
   filterResults(array) {
-    var seen = {};
-    var out = [];
-    var len = array.length;
-    var j = 0;
-    for(var i = 0; i < len; i++) {
-      var item = array[i];
-      if(seen[item] !== 1) {
-        seen[item] = 1;
-        out[j++] = item;
-      }
-    }
-    return out;
+   return array.reduce(function(a,b){
+      if (!a.find(function(element) {
+            return b.address.toLowerCase().replace(/\s/g,'')
+            == element.address.toLowerCase().replace(/\s/g,'')})
+          ) a.push(b);
+      return a;
+    },[]);
   }
 
   componentDidMount() {

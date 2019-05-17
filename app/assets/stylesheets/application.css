@@ -353,7 +353,7 @@
 
 .tile {
   border: 1px solid rgba(0, 0, 0, .2);
-  width: 600px;
+  width: 350px;
   margin: auto;
 }
 
@@ -405,6 +405,21 @@
   float: left;
 }
 
+.sidenav-show {
+  width: 200px;
+  z-index: 1;
+  top: 500px;
+  left: 10px;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 10px;
+  float: left;
+}
+
+.sidenav-show h5 {
+  font-family: 'Noto Serif', serif;
+}
+
 .sidenav a {
   text-decoration: none;
   font-size: 12px;
@@ -434,5 +449,5 @@ main {
 }
 
 .restaurantInfo {
-  text-align: center; 
+  text-align: center;
 }
