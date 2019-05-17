@@ -6,8 +6,10 @@
       </div>
     </header>
     <div class="sidenav">
-      MESSAGEBOARD
-      Recent Posts
+      <div class="title">
+        MESSAGEBOARD
+        Recent Posts
+      </div>
       <ul>
         <% if @posts %>
           <% @posts.each do |post| %>
@@ -30,7 +32,7 @@
                           <input type="radio" name="search-option" value="Boston" checked> Boston
                           <input type="radio" name="search-option" value="Cambridge"> Cambridge
                           <input type="text" name="query" placeholder="Search for Boston and Cambridge restaurant health inspection reports" class="searchbox">
-                          <button type="submit" id="edit-submit" value="Search" class="form-submit">Search</button>
+                          <button type="submit" id="edit-submit" value="Search" class="submit-button">Search</button>
                         </form>
             </div>
           </section>
@@ -40,7 +42,7 @@
             <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
               <div class="mdl-card__supporting-text">
                 <h4>Under the Table: Behind the Scenes</h4>
-                  <%= image_tag "Diagram.jpg" %> 
+                  <%= image_tag "Diagram.jpg" %>
               </div>
             </div>
           </section>

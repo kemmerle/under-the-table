@@ -301,6 +301,10 @@
   margin: 20px 15% 0 15%;
 }
 
+.searchForm h1 {
+  font-family: 'Noto Serif', serif;
+}
+
 .searchResults {
   list-style-type: none;
   font-weight: 300;
@@ -421,6 +425,11 @@
   font-weight: 500;
 }
 
+.sidenav .title {
+  text-align: center;
+  margin: auto;
+}
+
 .sidenav-show h3 {
   font-family: 'Noto Serif', serif;
 }
@@ -436,11 +445,18 @@
   color: blue;
 }
 
+.sidenav ul {
+  text-align: center;
+  margin: auto;
+}
+
 .sidenav li {
   font-size: 12px;
   list-style-type: none;
   padding: 5px;
-  border: 1px solid rgba(0, 0, 0, .2)
+  border: 1px solid rgba(0, 0, 0, .2);
+  width: 130px;
+  margin: auto;
 }
 
 main {
@@ -459,4 +475,8 @@ main {
 
 .map-container {
   margin-top: 200px;
+}
+
+.name li {
+  font-family: 'Noto Serif', serif;
 }
