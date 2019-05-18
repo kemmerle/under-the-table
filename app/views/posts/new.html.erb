@@ -1,6 +1,8 @@
-<div class="post-form">
+<header>
+  <%= image_tag "Posts-Header.jpg", :class => "imageToSpan" %>
+</header>
+<div class="searchForm">
   <h1> Post Something! </h1>
-
 <%= form_for(@post) do |f| %>
   <div class="post-field">
     <%= f.label :title %><br />
@@ -22,5 +24,4 @@
   <%= value %>
 </div>
 <%- end -%>
-
 </div>

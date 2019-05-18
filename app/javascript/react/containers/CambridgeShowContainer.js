@@ -43,10 +43,10 @@ class CambridgeShowContainer extends Component {
       name = this.state.restaurants[0].establishment_name
       address = this.state.restaurants[0].address.replace(/ *\([^)]*\) */g, "")
     };
-    if(this.state.restaurants.length == 0){loading = "Loading..."}
+    if(this.state.restaurants.length == 0) {loading = "Loading..."}
     const selectedReports = this.state.restaurants.map(restaurant => {
     return(
-      <div>
+      <div className="reportList-Cambridge">
         <CambridgeTile
           key={restaurant.id}
           id={restaurant.id}
@@ -68,18 +68,20 @@ class CambridgeShowContainer extends Component {
          <img src="/Cambridge-Header.png" className="header" alt="CambridgeHeader"/>
        </header>
        <div className="sidenav-show">
-         <h5>
+         <p>
          {name} <br/>
          {address} <br/>
-         </h5>
+         </p>
+       </div>
+       <div className="map-container">
+         <MapContainer
+           lat={lat}
+           long={long}
+           name={name}
+         />
        </div>
      {loading}
      {selectedReports}
-     < MapContainer
-       lat={lat}
-       long={long}
-       name={name}
-     />
      </div>
    )
   }
