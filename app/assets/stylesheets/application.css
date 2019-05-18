@@ -361,10 +361,15 @@
   margin: auto;
 }
 
-.reportList {
+.reportList-Cambridge {
   position: relative;
   top: -200px;
 }
+
+.reportList {
+  top: -200px;
+}
+
 .message-board {
   padding: 20px;
 }
@@ -414,7 +419,7 @@
 }
 
 .sidenav-show {
-  width: 350px;
+  width: 200px;
   z-index: 1;
   top: 500px;
   left: 10px;
@@ -479,4 +484,8 @@ main {
 
 .name li {
   font-family: 'Noto Serif', serif;
+}
+
+#hidden {
+  display: none;
 }

@@ -46,7 +46,7 @@ class CambridgeShowContainer extends Component {
     if(this.state.restaurants.length == 0) {loading = "Loading..."}
     const selectedReports = this.state.restaurants.map(restaurant => {
     return(
-      <div className="reportList">
+      <div className="reportList-Cambridge">
         <CambridgeTile
           key={restaurant.id}
           id={restaurant.id}
@@ -68,13 +68,13 @@ class CambridgeShowContainer extends Component {
          <img src="/Cambridge-Header.png" className="header" alt="CambridgeHeader"/>
        </header>
        <div className="sidenav-show">
-         <h3>
+         <p>
          {name} <br/>
          {address} <br/>
-         </h3>
+         </p>
        </div>
        <div className="map-container">
-         < MapContainer
+         <MapContainer
            lat={lat}
            long={long}
            name={name}
