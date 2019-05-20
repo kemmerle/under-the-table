@@ -51,7 +51,8 @@ class BostonShowContainer extends Component {
     var loading = "";
     var score = "";
     var coordString = "";
-    let hiddenDiv = "";
+    var hiddenDiv = "";
+    var mapDiv = "";
     if(this.state.restaurants.length>0){
       name = this.state.restaurants[0].businessname;
       address = this.state.restaurants[0].address;
@@ -62,6 +63,18 @@ class BostonShowContainer extends Component {
     if(this.state.restaurants.length>0 && this.state.restaurants[0].location != null) {
       coordString = this.state.restaurants[0].location.match(/\((.*?)\)/)[1].split(',');
     }
+    if (coordString != "") {
+      let lat = Number(coordString[0]);
+      let long = Number(coordString[1]);
+      mapDiv =
+      <div className="map-container" id={hiddenDiv}>
+      <MapContainer
+        lat={lat}
+        long={long}
+        name={name}
+      />
+      </div>
+    }
     if(coordString == "") {
       hiddenDiv = "hidden"
     } else {
@@ -69,7 +82,7 @@ class BostonShowContainer extends Component {
     }
     const selectedRestaurants = this.state.restaurants.map(restaurant => {
     return(
-      <div className="reportList">
+      <div className="reportList-Cambridge">
         <BostonTile
           key={restaurant._id}
           id={restaurant._id}
@@ -81,8 +94,6 @@ class BostonShowContainer extends Component {
       </div>
     )
   })
-    let lat = Number(coordString[0]);
-    let long = Number(coordString[1]);
     return(
       <div>
         <header>
@@ -96,13 +107,7 @@ class BostonShowContainer extends Component {
           {score} % Failure Rate
           </p>
         </div>
-        <div className="map-container" id={hiddenDiv}>
-        <MapContainer
-          lat={lat}
-          long={long}
-          name={name}
-        />
-        </div>
+        {mapDiv}
         {loading}
         <ul>{selectedRestaurants}</ul>
       </div>

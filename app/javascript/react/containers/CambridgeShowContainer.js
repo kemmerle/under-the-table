@@ -38,12 +38,25 @@ class CambridgeShowContainer extends Component {
     var address = "";
     var loading = "";
     var coordString = "";
+    var mapDiv = "";
     if(this.state.restaurants.length>0){
       coordString = this.state.restaurants[0].address.match(/\((.*?)\)/)[1].split(',');
       name = this.state.restaurants[0].establishment_name
       address = this.state.restaurants[0].address.replace(/ *\([^)]*\) */g, "")
     };
     if(this.state.restaurants.length == 0) {loading = "Loading..."}
+    if (coordString != "") {
+      let lat = Number(coordString[0]);
+      let long = Number(coordString[1]);
+      mapDiv =
+      <div className="map-container">
+      <MapContainer
+        lat={lat}
+        long={long}
+        name={name}
+      />
+      </div>
+    }
     const selectedReports = this.state.restaurants.map(restaurant => {
     return(
       <div className="reportList-Cambridge">
@@ -73,13 +86,7 @@ class CambridgeShowContainer extends Component {
          {address} <br/>
          </p>
        </div>
-       <div className="map-container">
-         <MapContainer
-           lat={lat}
-           long={long}
-           name={name}
-         />
-       </div>
+     {mapDiv}
      {loading}
      {selectedReports}
      </div>
