@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#Under the Table
 
-Things you may want to cover:
+Under the Table allows users to search through health inspection reports for restaurants in the Boston Cambridge area with a primarily React frontend and Ruby on Rails backend.
 
-* Ruby version
+To install all dependencies, type the following commands into the terminal:
+-bundle install
+-yarn install
 
-* System dependencies
+To set up the database, type the following commands into the terminal:
+bundle exec rake db:migrate
+bundle exec rake db:seed
 
-* Configuration
+To start the server, run the following commands in two terminal windows:
+-rails server
+-yarn run start
 
-* Database creation
+Then navigate to localhost:3000.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A test suite is forthcoming. 
