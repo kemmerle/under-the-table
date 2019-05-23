@@ -5,7 +5,7 @@
   <h1> Post Something! </h1>
 <%= form_for(@post) do |f| %>
   <div class="post-field">
-    <%= f.label :title %><br />
+    <%= f.label :title, "Title:" %><br />
     <%= f.text_field :title %>
   </div>
 
