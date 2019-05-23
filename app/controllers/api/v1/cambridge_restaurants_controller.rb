@@ -20,8 +20,6 @@ class Api::V1::CambridgeRestaurantsController < ApplicationController
   end
 
   def show
-    # @restaurant = CambridgeRestaurant.find(params[:id])
     render json: { restaurants: serialized_cam_restaurants }
   end
-
 end

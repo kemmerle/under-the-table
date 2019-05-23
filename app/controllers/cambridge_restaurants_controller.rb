@@ -1,7 +1,5 @@
 class CambridgeRestaurantsController < ApplicationController
-
    def index
-     @restaurants = CambridgeRestaurant.limit(10).order("RANDOM()")
    end
 
    def search
