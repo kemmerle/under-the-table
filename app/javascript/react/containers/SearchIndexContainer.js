@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import BostonSearchForm from "./BostonSearchForm";
 import CambridgeSearchForm from "./CambridgeSearchForm";
 
-class SearchFormContainer extends Component {
+class SearchIndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,4 +30,4 @@ class SearchFormContainer extends Component {
 
 }
 
-export default SearchFormContainer;
+export default SearchIndexContainer;

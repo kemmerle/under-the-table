@@ -5,7 +5,6 @@
   <div class="message-board">
     <div class="posts-links-bold">
     <h1><%=@post.title%></h1>
-
     <p> <%= @post.body %> </p>
     <%= link_to "Write a reply!", new_post_reply_path(@post, @replies) %>
     <br/>
@@ -13,7 +12,6 @@
 
     <% if @post.replies %>
     <h3> Replies: </h3>
-
     <% @post.replies.each do |reply| %>
     <div class="posts-links">
       <p>
@@ -24,7 +22,6 @@
     </div>
     <% end %>
   <% end  %>
-
 
     <script src="/javascripts/app.js"></script>
   </div>
