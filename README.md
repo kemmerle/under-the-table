@@ -18,4 +18,4 @@ yarn run start
 
 Then navigate to localhost:3000.
 
-A test suite is forthcoming.
+A test suite includes RSpec feature tests and Enzyme testing with fetchMock.
