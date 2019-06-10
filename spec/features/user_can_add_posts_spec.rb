@@ -15,11 +15,11 @@ feature 'users can add new posts' do
     visit new_post_path
     expect(page).to have_content 'Post Something!'
 
+    save_and_open_page
     fill_in 'Title:', with: 'A truly awful experience in the theater district!'
-    fill_in 'Post:', with: 'I just had the worst dinner possible at the Theater
-    Restaurant, before I went to see a show. Do NOT go here, or you will regret it!'
+    fill_in 'Post:', with: 'I just had the worst dinner possible at the Theater    Restaurant, before I went to see a show. Do NOT go here, or you will regret it!'
 
-    click_button 'Create Post'
+    click_button "Create Post"
     expect(page).to have_content 'Your post has been added successfully!'
     expect(page).to have_content 'A truly awful experience in the theater district!'
   end
