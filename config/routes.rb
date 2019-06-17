@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'restaurants/', to: 'restaurants#index'
   get 'boston_restaurants/search', to: 'boston_restaurants#search'
   get 'cambridge_restaurants/search', to: 'cambridge_restaurants#search'
-  get 'cambridge_restaurants/review', to: 'cambridge_restaurants#review'
   resources :boston_restaurants, only: [:index, :show, :search]
   resources :cambridge_restaurants, only: [:index, :show, :search]
   resources :posts, only: [:index, :show, :new, :create] do
@@ -18,6 +17,7 @@ Rails.application.routes.draw do
       resources :cambridge_restaurants, only: [:index, :show]
       post 'boston_restaurants/search', to: 'boston_restaurants#search'
       post 'cambridge_restaurants/search', to: 'cambridge_restaurants#search'
+      post 'cambridge_restaurants/review', to: 'cambridge_restaurants#review'
     end
   end
 end
