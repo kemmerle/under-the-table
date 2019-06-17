@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from 'axios';
 
 import CambridgeTile from "../components/CambridgeTile";
 import MapContainer from "./MapContainer"
