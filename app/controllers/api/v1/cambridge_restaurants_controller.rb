@@ -12,6 +12,12 @@ class Api::V1::CambridgeRestaurantsController < ApplicationController
     render json: @restaurants
   end
 
+  def review
+    uri = URI("https://maps.googleapis.com/maps/api/place/findplacefromtext/output?#{params["query"]}")
+    response = Net::HTTP.get(uri)
+    render json: response
+  end
+
   def serialized_cam_restaurants
     ActiveModel::Serializer::ArraySerializer
       .new(CambridgeRestaurant.where(
