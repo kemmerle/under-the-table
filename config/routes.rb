@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resources :boston_restaurants, only: [:index, :show]
       resources :cambridge_restaurants, only: [:index, :show]
       post 'boston_restaurants/search', to: 'boston_restaurants#search'
+      post 'boston_restaurants/review', to: 'boston_restaurants#review'
       post 'cambridge_restaurants/search', to: 'cambridge_restaurants#search'
     end
   end
